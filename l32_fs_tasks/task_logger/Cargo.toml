@@ -1,0 +1,22 @@
+[package]
+name = "task_logger"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.89"
+chrono = { version = "0.4.38", features = ["serde"] }
+clap = { version = "4.5.19", features = ["derive", "env"] }
+futures = "0.3.31"
+notifier = { path = "../notifier" }
+serde_json = "1.0.128"
+task = { path = "../task" }
+tokio = { version = "1.40.0", features = [
+  "macros",
+  "io-util",
+  "fs",
+  "rt-multi-thread",
+] }
+tracing = "0.1.40"
+tracing-appender = "0.2.3"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }

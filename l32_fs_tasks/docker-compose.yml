@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  task-creator:
+    build:
+      context: .
+      dockerfile: task_creator/Dockerfile
+    ports:
+      - 3001:3000
+    environment:
+      - RUST_LOG=trace
+    volumes:
+      - ./tmp/tasks/:/opt/task_creator/output/
+
+  task-processor:
+    build:
+      context: .
+      dockerfile: task_processor/Dockerfile
+    environment:
+      - RUST_LOG=trace
+    volumes:
+      - ./tmp/tasks/:/opt/task_processor/input/
+      - ./tmp/results/:/opt/task_processor/output/
+
+  task-logger:
+    build:
+      context: .
+      dockerfile: task_logger/Dockerfile
+    environment:
+      - RUST_LOG=trace
+    volumes:
+      - ./tmp/results/:/opt/task_logger/input/
+      - ./tmp/logs/:/opt/task_logger/output/

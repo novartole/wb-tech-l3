@@ -1,0 +1,22 @@
+[package]
+name = "server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.89"
+axum = { version = "0.7.7", features = ["macros", "ws"] }
+chrono = { version = "0.4.38", features = ["serde"] }
+clap = { version = "4.5.19", features = ["derive", "env"] }
+dashmap = "6.1.0"
+futures = "0.3.31"
+serde = { version = "1.0.210", features = ["derive"] }
+serde_json = { version = "1.0.128" }
+thiserror = "1.0.64"
+tokio = { version = "1.40.0", features = ["macros", "net", "rt-multi-thread"] }
+tower = { version = "0.5.1", features = ["util"] }
+tower-http = { version = "0.6.1", features = ["trace"] }
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+validator = { version = "0.18.1", features = ["derive"] }
+uuid = { version = "1.10.0", features = ["serde", "v4", "fast-rng"] }

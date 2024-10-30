@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  web-app:
+    build:
+      context: .
+    depends_on:
+      - redis
+    environment:
+      - RUST_LOG=trace
+      - WBTECH_L37_DB_PARAMS=$WBTECH_L37_DB_PARAMS
+    ports:
+      - 3001:$WBTECH_L37_PORT
+
+  redis:
+    image: redis:alpine
+    restart: always
+    ports:
+      - 6379:6379
